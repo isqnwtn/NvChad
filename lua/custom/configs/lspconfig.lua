@@ -21,10 +21,12 @@ lspconfig.metals.setup {
 }
 
 lspconfig.rust_analyzer.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     ['rust-analyzer'] = {
       diagnostics = {
-        enable = false;
+        enable = true;
       }
     }
   }

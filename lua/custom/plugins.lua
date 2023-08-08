@@ -79,6 +79,11 @@ local plugins = {
     opts = overrides.cmp,
   },
 
+  {
+    'ckipp01/nvim-jenkinsfile-linter',
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
