@@ -14,8 +14,18 @@ M.general = {
     ["<leader>w-"] = { "<cmd> vertical resize -5 <CR>", "Window right" },
 
     -- open link under curson in browser
-    ["gx"] = {"<cmd> :execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>"}
+    ["gx"] = {"<cmd> :execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>"},
+
+    -- change words
+    ["cis"] = {"ci[","Change inside square brackets"},
+    ["cic"] = {"ciB","Change inside curly brackets"},
+    ["cid"] = {"ci\"","Change inside double quotes"},
+    ["ciq"] = {"ci'","Change inside quotes"},
+    ["cia"] = {"ci<","Change inside angle brackets"},
   },
+  v = {
+    ["<leader>yc"] = {"\"*y" , "Copy to system clipboard"},
+  }
 }
 
 M.tabufline = {

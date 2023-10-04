@@ -1,5 +1,11 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
+
 local capabilities = require("plugins.configs.lspconfig").capabilities
+-- for ufo
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
 
 local lspconfig = require "lspconfig"
 
