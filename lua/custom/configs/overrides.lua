@@ -67,17 +67,19 @@ M.nvimtree = {
 M.cmp = {
   cmdline = { ':', {
     sources = {
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    }, {
-      { name = 'orgmode' }
+      { name = 'path' },
+      { name = 'cmdline' },
+      { name = 'orgmode' },
     }
   }
 
   },
   sources = {
-    {name = 'orgmode'}
+    { name = "orgmode"},
+    { name = "nvim_lsp" },
+    { name = "vsnip" },
+    { name = "path" },
+    { name = "buffer" },
   }
 }
 
