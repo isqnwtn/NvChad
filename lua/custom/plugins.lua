@@ -53,6 +53,11 @@ local plugins = {
     config = function()
       require('orgmode').setup_ts_grammar()
       require('orgmode').setup({
+        org_todo_keywords = {'TODO', 'WAITING', '|', 'DONE', 'DISCARDED'},
+        org_todo_keyword_faces = {
+          WAITING = ':foreground blue :weight bold',
+          DISCARDED = ':background grey :slant italic :underline on',
+        },
         org_agenda_files = {'~/notes/org/*', '~/notes/my-orgs/**/*'},
         org_default_notes_file = '~/notes/org/refile.org',
       })
@@ -94,15 +99,29 @@ local plugins = {
         })
     end
   },
-
-  -- nvim ufo
   {
-    "kevinhwang91/nvim-ufo",
+    "kshenoy/vim-signature",
+    enabled = false,
     config = function()
-      require "kevinhwang91/promise-async"
-      require("ufo").setup({})
+      require("vim-signature").setup({})
     end
   },
+  {
+    "chentoast/marks.nvim",
+    event = "BufReadPre",
+    config = function()
+      require("marks").setup {}
+    end,
+  },
+
+  -- nvim ufo
+  -- {
+  --   "kevinhwang91/nvim-ufo",
+  --   config = function()
+  --     require "kevinhwang91/promise-async"
+  --     require("ufo").setup({})
+  --   end
+  -- },
 
   -- To make a plugin not be loaded
   -- {
