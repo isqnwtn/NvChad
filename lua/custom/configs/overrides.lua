@@ -132,4 +132,38 @@ M.noice = {
     },
 }
 
+-- orgmode overrides
+M.org = {
+  org_todo_keywords = {'ANCHOR', 'TODO', 'PROGRESS', 'WAITING', '|', 'DONE', 'DISCARDED'},
+  org_todo_keyword_faces = {
+    ANCHOR = ':foreground orange :weight bold',
+    PROGRESS = ':foreground lightgreen :weight bold',
+    WAITING = ':foreground lightblue :weight bold',
+    DISCARDED = ':background grey :slant italic :underline on',
+  },
+  win_border = {'╔', '═' ,'╗', '║', '╝', '═', '╚', '║' },
+  win_split_mode = function(name)
+    local bufnr = vim.api.nvim_create_buf(false, true)
+    --- Setting buffer name is required
+    vim.api.nvim_buf_set_name(bufnr, name)
+
+    local fill = 0.8
+    local width = math.floor((vim.o.columns * fill))
+    local height = math.floor((vim.o.lines * fill))
+    local row = math.floor((((vim.o.lines - height) / 2) - 1))
+    local col = math.floor(((vim.o.columns - width) / 2))
+
+    vim.api.nvim_open_win(bufnr, true, {
+      relative = "editor",
+      width = width,
+      height = height,
+      row = row,
+      col = col,
+      style = "minimal",
+      border = "rounded"
+    })
+  end,
+  org_agenda_files = {'~/notes/org/*', '~/notes/my-orgs/**/*'},
+  org_default_notes_file = '~/notes/org/refile.org',
+}
 return M

@@ -52,15 +52,7 @@ local plugins = {
     "nvim-orgmode/orgmode",
     config = function()
       require('orgmode').setup_ts_grammar()
-      require('orgmode').setup({
-        org_todo_keywords = {'TODO', 'WAITING', '|', 'DONE', 'DISCARDED'},
-        org_todo_keyword_faces = {
-          WAITING = ':foreground blue :weight bold',
-          DISCARDED = ':background grey :slant italic :underline on',
-        },
-        org_agenda_files = {'~/notes/org/*', '~/notes/my-orgs/**/*'},
-        org_default_notes_file = '~/notes/org/refile.org',
-      })
+      require('orgmode').setup(overrides.org)
     end,
     lazy = false,
   },
@@ -112,6 +104,12 @@ local plugins = {
     config = function()
       require("marks").setup {}
     end,
+  },
+  {
+    "carbon-steel/detour.nvim",
+    config = function()
+      require("detour").Detour()
+    end
   },
 
   -- nvim ufo
