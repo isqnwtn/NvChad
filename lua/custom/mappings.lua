@@ -38,9 +38,10 @@ M.general = {
 
     -- moving cursor 
     ["mb"] = {"0","Move cursor to beginning"},
-    ["mf"] = {"^","Move cursor to beginning"},
+    ["mf"] = {"^","Move cursor to first non space"},
     ["me"] = {"$","Move cursor to end"},
     ["mm"] = {"%","Move cursor matching bracket"},
+    ["mw"] = {"t_","Move cursor matching bracket"},
     ["muc"] = {"[{","Move cursor up a curly bracket"},
     ["mdc"] = {"]}","Move cursor down a curly bracket"},
     ["mub"] = {"[(","Move cursor up a bracket"},
@@ -49,11 +50,6 @@ M.general = {
     -- folding
     ["<leader>zz"] = {"viBzf","Fold curly brackets under cursor"},
     ["<leader>zb"] = {"vibzf","Fold brackets under cursor"},
-    ["<leader>zc"] = {
-      function ()
-        print("hellow")
-      end
-    },
 
 
     -- telescope
@@ -63,14 +59,19 @@ M.general = {
     ["<leader>ta"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols <CR>", "Open workspace symbol finder" },
 
     -- custom lsp stuff
-    ["<leader>gr"] = {
-      function()
-        require('telescope.builtin').lsp_references()
+    ["<leader>gd"] = {
+      function ()
+        --vim.cmd("Telescope grep_string default_text=<cword>")
+        require('telescope.builtin').grep_string{default_text=vim.fn.expand("<cword>")}
       end
-      , "Open lsp references in telescope" },
+      , "Open workspace symbol finder" },
 
     -- custom functions for testing stuff
-    ["<leader>ct"] = { "<cmd>.s/</&lt;/g <CR>"},
+    ["<leader>ct"] = {
+      function ()
+        vim.cmd("echo '"..vim.fn.expand("<cword>").."'")
+      end
+    ,"test function"},
   },
   v = {
     ["<leader>yc"] = {"\"*y" , "Copy to system clipboard"},
